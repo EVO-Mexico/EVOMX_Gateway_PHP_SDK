@@ -1,19 +1,19 @@
-# Turnkey-PHP-SDK
-This  library provides integration access to the Turnkey Global Api.
+# EVO-PHP-SDK
+This  library provides integration access to the EVO Payments Gateway.
 
 ##Quick Start
 
-Payments PHP SDK is a small library of PHP code that you can use to quickly integrate with the Payments system and submit transactions, check their status and more.
+EVO Payments PHP SDK is a small library of PHP code that you can use to quickly integrate with the EVO Payments system and submit transactions, check their status and more.
 
 This section will give you a very quick introduction as to how you can use it and later in this document you will find more details.
 
 ##Before you Begin
 
-Before using the Payments PHP SDK you should be familiar with the contents of the [API Specification for Merchants](docs/API-Specification.pdf) document as it describes all fields and their meaning within a given payment transaction.
+Before using the EVO vPayments PHP SDK you should be familiar with the contents of the [API Specification for Merchants](docs/API-Specification.pdf) document as it describes all fields and their meaning within a given payment transaction.
 
 ##Setup your Project
 
-Payments PHP SDK is delivered as a composer(*) package, or dependency, that you should add to your PHP project in order to use it.
+EVO Payments PHP SDK is delivered as a composer(*) package, or dependency, that you should add to your PHP project in order to use it.
 
 Once done - all its code will be available to you under the Payments PHP namespace.
 
@@ -31,7 +31,7 @@ Choose the one that is most appropriate for your project.
 
 ##Configure
 
-Payments SDK needs to ‘know’ a few things before it can perform any operation - for example - your authentication credentials; which is your merchant number; if you’re only testing your app and you don’t actually want to pay with a real card or if it is running in a production environment, etc.
+EVO Payments SDK needs to ‘know’ a few things before it can perform any operation - for example - your authentication credentials; which is your merchant number; if you’re only testing your app and you don’t actually want to pay with a real card or if it is running in a production environment, etc.
 
 You need to configure it properly before use. All configuration is done through the Payments/Payments class. The simplest way of using it is to create a new instance of it, choose its operation environment (test or production) and then give it all other details either at once - as an associative array (or any other Iterator object) or one by one. For example:
 
