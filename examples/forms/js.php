@@ -19,6 +19,7 @@ try {
                 amount($amount)->
                 country($country)->
                 currency($currency)->
+				customerId($customer_it_token)->
                 paymentSolutionId($paymentSolutionId);
         $token = $purchase->token();
         ?>

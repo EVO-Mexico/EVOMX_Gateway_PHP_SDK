@@ -21,7 +21,7 @@ class RequestTokenAuth extends RequestToken {
         "merchantNotificationUrl" => array("type" => "mandatory"),
         "customerId" => array(
             "type" => "conditional",
-            "mandatory" => array("paymentMethod" => "CreditCard"),
+            "mandatory" => array("paymentSolutionId" => "500"),
         ),
         "customerDocumentNumber" => array(
             "type" => "conditional",
@@ -114,6 +114,9 @@ class RequestTokenAuth extends RequestToken {
         "specinCreditCardToken" => array("type" => "optional"),
         "specinProcessWithoutCvv2" => array("type" => "optional"),
         "bankMid" => array("type" => "optional"),
+        "cardOnFileType" => array("type" => "optional"),
+        "cardOnFileInitiator" => array("type" => "optional"),
+        "cardOnFileInitialTransactionId" => array("type" => "optional"),
     );
 
     public function __construct() {

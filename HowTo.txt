@@ -1,18 +1,19 @@
 
-We provide both examples PHP web pages for form integration and the test cases for demostrating direct API usage.
+We provide both examples PHP web pages for FORM INTEGERATION and the test cases for demostrating direct API usage.
 1. PHP web pages are for FORM INTEGRATION which must be deployed on PHP web server.
 2. Testcases are for DIRECT API integeration and can be run by PHPUNIT after you install composer
 
-Here are directory instructions:
-----
-   |--examples
-     |
-     | -- example_data.php
-     |	    Containing the common settings for the examples, such as: merchant id, password, etc.
-     | -- forms
-     |	    Containing the sample php files for integration mode: iframe(js.php)/redirect(redirect.php)/hostedpaypage(hostedpayment.php) 			
-     | -- tests
-            Containing test cases for DIRECT API.
+The directory layout as below:
+----|
+    |--examples
+		 |
+		 | -- example_data.php
+		 |	    Containing the common settings for the examples, such as: merchant id, password, etc.
+		 | -- forms
+		 |	    Containing the sample php files for integration mode: iframe(js.php)/redirect(redirect.php)/hostedpaypage(hostedpayment.php) 	
+		 
+    |--tests
+		Containing test cases for DIRECT API.
 
 To run the FORM INTEGERATION, please put the folder into your web server and access the below URL: 
     a. Iframe integeration  - http://YOUR_DOMAIN/YOUR_CONTEXT_PATH/examples/forms/js.php
@@ -22,45 +23,53 @@ To run the FORM INTEGERATION, please put the folder into your web server and acc
     
 To run testcases from local, please refer to the below instructions:
     a. Install composer
-    b. Open up command line and change to currenct dir, then run composer install
+    b. Open up command line and change to current dir, then run composer install
     c. Before run the test cases, you must make sure your IP is whitelisted by the payment gateway. You can check this by running:
     	.\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\IpCheck.php
  	   If you see OK at the end, then it's ready to run other testcases. Otherwise, please check the detail message.
  	d. Run the test suites by performing:  .\vendor\bin\phpunit
-
-	1. How to run CAPTURE testcase?    
+	
+	1. How to run AUTH testcase ?    
+        a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\AuthTest.php from command line
+		
+	2. How to run PURCHASE testcase ?    
+        a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\PurchaseTest.php from command line
+		
+	3. How to run VERIFY testcase ?    
+        a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\VerifyTest.php from command line
+		
+	4. How to run CAPTURE testcase?    
         a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\SampleAuthData.php from command line, this will generate [data.txt] file'
 	    b. Open up [data.txt] file, copy the value of the redirectionUrl field, access it in browser, then click [Success] button
-	    c. Open up [data.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId]
+	    c. Open up [data.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId] in CaptureTest.php file.
 	    d. Uncomment the statements block in CaptureTest.php
 	    e. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\CaptureTest.php from command line
 	    f. Verify the result. If there's any error occurs or the testcase fails, change [$enableLog] to [true] in IpgBaseTest.php to see more details.
 	    
-	2. How to run VOID testcase?    
+	5. How to run VOID testcase?    
         a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\SampleAuthData.php from command line, this will generate [data.txt] file'
 	    b. Open up [data.txt] file, copy the value of the redirectionUrl field, access it in browser, then click [Success] button
-	    c. Open up [data.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId]
+	    c. Open up [data.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId] in VoidTest.php file.
 	    d. Uncomment the statements block in VoidTest.php
 	    e. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\VoidTest.php from command line
 	    f. Verify the result. If there's any error occurs or the testcase fails, change [$enableLog] to [true] in IpgBaseTest.php to see more details.
 	       
 	    
-	3. How to run GET_STATUS testcase?    
+	6. How to run GET_STATUS testcase?    
         a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\SampleAuthData.php from command line, this will generate [data.txt] file'
 	    b. Open up [data.txt] file, copy the value of the redirectionUrl field, access it in browser, then click [Success] button
-	    c. Open up [data.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId]
+	    c. Open up [data.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId] in StatusCheckTest.php file.
 	    d. Uncomment the statements block in StatusCheckTest.php
 	    e. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\StatusCheckTest.php from command line
 	    f. Verify the result. If there's any error occurs or the testcase fails, change [$enableLog] to [true] in IpgBaseTest.php to see more details.
 	    
 	    
-	4. How to run REFUND testcase?    
+	7. How to run REFUND testcase?    
         a. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\SamplePurchaseData.php from command line, this will generate [purchasedata.txt] file'
 	    b. Open up [purchasedata.txt] file, copy the value of the redirectionUrl field, access it in browser, then click [Success] button
-	    c. Open up [purchasedata.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId]
+	    c. Open up [purchasedata.txt] file, copy the value of the merchantTxId  field, assign it to the variable [$originalMerchantTxId] in RefundTest.php file.
 	    d. Uncomment the statements block in RefundTest.php
 	    e. Run .\vendor\bin\phpunit --bootstrap .\vendor\autoload.php .\tests\RefundTest.php from command line
 	    f. Verify the result. If there's any error occurs or the testcase fails, change [$enableLog] to [true] in IpgBaseTest.php to see more details.
-       
-           
+
         

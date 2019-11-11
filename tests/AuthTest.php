@@ -30,7 +30,7 @@ class AuthTest extends IpgBaseTest
         
         $this->assertEquals("Payments\ResponseSuccess", get_class($result));
         $this->assertEquals("redirection", $result->result);
-        $this->assertEquals("NOT_SET_FOR_CAPTURE", $result->status);
+        $this->assertEquals("INCOMPLETE", $result->status);
     }
     
     
@@ -61,7 +61,7 @@ class AuthTest extends IpgBaseTest
         
         $this->assertEquals("Payments\ResponseSuccess", get_class($result));
         $this->assertEquals("redirection", $result->result);
-        $this->assertEquals("SET_FOR_CAPTURE", $result->status);
+        $this->assertEquals("INCOMPLETE", $result->status);
     }
     
   

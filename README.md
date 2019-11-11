@@ -1,17 +1,17 @@
 # Turnkey-PHP-SDK
 This  library provides integration access to the Turnkey Global Api.
 
-## Quick Start
+##Quick Start
 
 Payments PHP SDK is a small library of PHP code that you can use to quickly integrate with the Payments system and submit transactions, check their status and more.
 
 This section will give you a very quick introduction as to how you can use it and later in this document you will find more details.
 
-## Before you Begin
+##Before you Begin
 
 Before using the Payments PHP SDK you should be familiar with the contents of the [API Specification for Merchants](docs/API-Specification.pdf) document as it describes all fields and their meaning within a given payment transaction.
 
-## Setup your Project
+##Setup your Project
 
 Payments PHP SDK is delivered as a composer(*) package, or dependency, that you should add to your PHP project in order to use it.
 
@@ -19,7 +19,7 @@ Once done - all its code will be available to you under the Payments PHP namespa
 
 > Composer is a popular dependency management tool and you can find more information about it at https://getcomposer.org/
 
-## Choose an Operation Mode
+##Choose an Operation Mode
 
 Payments SDK lets you choose between two ways of using it:
 
@@ -29,7 +29,7 @@ Payments SDK lets you choose between two ways of using it:
 
 Choose the one that is most appropriate for your project.
 
-## Configure
+##Configure
 
 Payments SDK needs to ‘know’ a few things before it can perform any operation - for example - your authentication credentials; which is your merchant number; if you’re only testing your app and you don’t actually want to pay with a real card or if it is running in a production environment, etc.
 
@@ -71,7 +71,7 @@ password(‘mypassword’);
 
 It will take the newly set SessionTokenRequestUrl.
 
-##  Issue Requests
+## Issue Requests
 
 Use the Payments object you just configured to create payment processing requests such as Capture, Purchase, StatusCheck, Refund, etc:
 ```php
@@ -94,7 +94,7 @@ Or one by one:
 ```
 Please consult the [API Specification for Merchants](docs/API-Specification.pdf) document for detailed specification of individual fields.
 
-##  Execute and Handle Responses
+## Execute and Handle Responses
 
 Finally, once you have your request you can execute it by calling its execute() method. You can give it a callback (a PHP callable) that will handle returned data:
 ```php	
@@ -117,15 +117,15 @@ Or you can assign the result to a variable of your choice:
 ```
 More on result data in the [API Specification for Merchants](docs/API-Specification.pdf) document.
 
-##  Check out some Examples
+## Check out some Examples
 
 You can find various examples, in PHP code, under the _examples/_ folder of the SDK. 
 
-##  Payments PHP SDK Reference
+## Payments PHP SDK Reference
 
 In this section you can find more details about the SDK.
 
-##  Configuring the SDK and its Request Objects
+## Configuring the SDK and its Request Objects
 
 Objects of the SDK sometimes have their configuration parameters through which you can control the way they operate. There is a general configuration class, called Payments/Payments, that contains parameters common for all other classes and there are parameters that only control individual payments operations that are set on other classes - for example, every payment operation object (or Request Object) will have it’s own parameters too.
 
@@ -137,7 +137,7 @@ You can find the full list of parameters in the [API Specification for Merchants
 
 All classes that can be configured are descendants of _Payments/Configurable_ class. 
 
-##  How to Configure an Object
+## How to Configure an Object
 
 Instances of a Payments/Configurable hold a set of parameter -> value mappings that are exposed in three ways - as methods, as properties or as array indexes. The method or property name and array index value determine which parameter is to be used in the given operation. That is, you can access the parameter merchantId of object Payments as:
 
@@ -195,19 +195,19 @@ All methods of setting and getting parameter values are completely interchangeab
 
 Checking if a parameter has already been assigned a value is as simple as using PHP’s own function - _isset(), array_key_exists()_ and so on.
 
-##  General Configuration Parameters
+## General Configuration Parameters
 
 General Configuration Parameters are those that you configure on the Payments object and are then applicable to all subsequent Request Objects you obtain from it. Ideally you configure these once, on instantiating the main Payments object and then save the extra code of setting them individually again and again. 
 
-## # Note: 
+### Note: 
 These parameters are not global - if you create one Request Object it will retain the configuration of the Payments object at the instance of creation. Further changes to Payments will not affect an already created Request Object.
 
-## # Note: 
+### Note: 
 The Payments object has two special helper methods that set a predefined list of parameters, depending on your choice of environment - testEnvironment() and productionEnvironment() (See above on how to use them). It is mandatory that you use one or the other, otherwise your configuration will not be complete.
 
 To get the full list of supported parameters and their meaning please consult the [API Specification for Merchants](docs/API-Specification.pdf) document.
 
-##  Payments Requests, Results and their Parameters
+## Payments Requests, Results and their Parameters
 
 Every payment operation has its own Request Object. To successfully perform any request one needs to create a related object, configure it and then call its execute() method.
 
@@ -217,7 +217,7 @@ There are 7 Request Object classes in total:
 * __Payments/Auth__ requests authorisation for a payment.
 * __Payments/Capture__ performs a capture operation on an authorized payment.
 * __Payments/Void__ cancels a previously authenticated payment.
-* __Payments/Purchase__ does an authorize and capture operations at once (and cannot be voided).
+* __Payments/Purchase__ does an authorize and capture operations at once (and cannot be voided). It also supports Recurring Payments(COF) - set cardOnFileType to 'First' for initial transaction, set cardOnFileType to 'Repeat' and cardOnFileInitiator to 'Merchant' for subsequent transactions.
 * __Payments/Refund__ refunds a previous capture operation, partially or in full.
 * __Payments/StatusCheck__ returns the status of an already issued payment transaction, as such it doesn’t actually generate a new transaction.
 
@@ -225,7 +225,7 @@ All classes are descendants of _Payments/Request_ class and also inherit setting
 
 For more information on payment transactions please check the [API Specification for Merchants](docs/API-Specification.pdf) document.
 
-##  Typical Request Flows
+## Typical Request Flows
 
 In your PHP code you will most likely create a Payments object, configure it and use it to create one or more Requests objects. Then you will set parameters to them and call their _execute()_ method to actually submit them to the Payments API. In turn it will pass back data you need to make your app work properly - these can be errors due to misconfiguration,  unexpected conditions, transaction details you’ll need later and etc.
 
@@ -284,11 +284,11 @@ Response Objects also inherit the _Payments/Configurable_ class so you can obtai
 
 Every Request will return it’s individual Response parameters. For example - one such parameter that a _Capture_ request will give you is the amount it captured. These parameters are described in the [API Specification for Merchants](docs/API-Specification.pdf) document.
 
-##  Payments Errors
+## Payments Errors
 
 Occasionally your payment processing API will not be able to successfully complete a request and it will return an error. Please check out the [API Specification for Merchants](docs/API-Specification.pdf) document to find out more about errors and what causes them to occur.
 
-##  Payments Exceptions
+## Payments Exceptions
 
 In addition to errors found during the processing of a Request exceptions might also be thrown. Here is a list of the Payments PHP SDK Exceptions:
 * _Payments/ConfigurationEndpointNotSet_
@@ -304,19 +304,19 @@ In addition to errors found during the processing of a Request exceptions might 
 
 All these classes inherit from a base Payments/Exception class so that you can easily separate them in a try-catch block.
 
-##  Advanced Usage Scenarios
+## Advanced Usage Scenarios
 
 This section contains a few suggestions and ideas you might find helpful in saving work or keeping your application code cleaner.
 
 You shouldn’t treat them as the proper way of using the Payments PHP SDK as they’re nothing more than suggestions.
 
-##  General vs Individual Configuration Parameters
+## General vs Individual Configuration Parameters
 
 Payments PHP SDK and its _Configurable_ objects are quite flexible in allowing the setting of parameters. There are hardly any limits on where you can set a given parameter. For this reason, use the _Payments_ object to set those parameters that will be shared among subsequent requests - like merchant ids, passwords or just about anything else.
 
 It might keep your code shorter and simpler.
 
-##  Use the Objects of your Application
+## Use the Objects of your Application
 
 It’s often the case that your application might already be using other classes and objects - database result objects like _mysqli_result_ or perhaps business-logic objects like Orders, Products, Merchants, etc.
 
@@ -324,7 +324,7 @@ If these implement any of the iterator-like PHP interfaces, like it is the case 
 
 In a similar way - when you _execute()_ a request you pass in a callback where the result will be handled and this callback might just as well be a method within a Payment-like object you already developed. This way your business logic won’t be spread among various source files.
 
-##  Use Builders pattern to write less
+## Use Builders pattern to write less
 
 The Builders pattern is a common way of dealing with objects that need long sequences of method calls before they’re usable, exactly the case of configuring Payments PHP SDK objects. If you have chosen method calls, then just ‘chain’ them one after the other, parameter-setting methods always return _$this_:
 ```php

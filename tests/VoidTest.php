@@ -30,7 +30,6 @@ class VoidTest  extends IpgBaseTest
 //         parent::logResult($result);
 //         $this->assertEquals("Payments\ResponseSuccess", get_class($result));
 //         $this->assertEquals("success", $result->result);
-//         $this->assertEquals("VOID", $result->status);
     }
 
   

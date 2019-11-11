@@ -9,16 +9,16 @@ class Config {
     static $BaseUrl;
     static $JavaScriptUrl;
     static $TestUrls = array(
-        "SessionTokenRequestUrl" => "https://api.test.universalpay.es/token",
-        "PaymentOperationActionUrl" => "https://api.test.universalpay.es/payments",
-        "JavaScriptUrl" => "https://cashierui.test.universalpay.es/js/api.js",
-        "BaseUrl" => "https://cashierui.test.universalpay.es/",
+        "SessionTokenRequestUrl" => "https://apiuat.test.intelligent-payments.com/token",
+        "PaymentOperationActionUrl" => "https://apiuat.test.intelligent-payments.com/payments",
+        "JavaScriptUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/js/api.js",
+        "BaseUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/ui/cashier",
     );
     static $ProductionUrls = array(
-        "SessionTokenRequestUrl" => "https://api.universalpay.es/token",
-        "PaymentOperationActionUrl" => "https://api.universalpay.es/payments",
-        "JavaScriptUrl" => "https://cashierui.universalpay.es/js/api.js",
-        "BaseUrl" => "https://cashierui.universalpay.es",
+        "SessionTokenRequestUrl" => "https://api.intelligent-payments.com/token",
+        "PaymentOperationActionUrl" => "https://api.intelligent-payments.com/payments",
+        "JavaScriptUrl" => "https://cashierui-api.intelligent-payments.com/js/api.js",
+        "BaseUrl" => "https://cashierui-api.intelligent-payments.com/ui/cashier",
     );
     static $Protocol = "https";
     static $Method = "POST";

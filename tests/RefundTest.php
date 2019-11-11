@@ -31,7 +31,6 @@ class RefundTest  extends IpgBaseTest
 // 		parent::logResult($result);
 //         $this->assertEquals("Payments\ResponseSuccess", get_class($result));
 //         $this->assertEquals("success", $result->result);
-//         $this->assertEquals("SET_FOR_REFUND", $result->status);
     }
 
   

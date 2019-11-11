@@ -1,19 +1,19 @@
 <?php
+
 require_once __DIR__ . '/IpgBaseTest.php';
 
 use Payments\Payments;
 
-class PurchaseTest  extends IpgBaseTest
+class VerifyTest extends IpgBaseTest
 {
    
-    
 
-    public function testPurchaseSuccess()
+    public function testVerifySuccess()
     {
-
         $sessionToken =  $this->getCardTokenHelper() ;
-
-        $tokenize = $this->payments->purchase();
+        
+        $tokenize = $this->payments->verify();
+        
         $tokenize->allowOriginUrl(parent::$FAKE_HOST)->
                 brandId(parent::$BRAND_ID) ->
                 merchantNotificationUrl(parent::$FAKE_HOST)->
@@ -26,17 +26,15 @@ class PurchaseTest  extends IpgBaseTest
                 specinCreditCardToken($sessionToken->cardToken) ->
                 //this is mandatory for payment cards method(paymentSolutionId=500), otherwise 'General error found during NVP transaction' occurs.
                 customerId($sessionToken->customerId)
-
                 ;
         $result = $tokenize->execute();
 
         parent::logResult($result);
-        
+
         $this->assertEquals("Payments\ResponseSuccess", get_class($result));
-        $this->assertEquals("redirection", $result->result);
-//         $this->assertEquals("SET_FOR_CAPTURE", $result->status);
+        $this->assertEquals("success", $result->result);
+        $this->assertEquals("VERIFIED", $result->status);
     }
 
-  
 }
 ?>
