@@ -9,16 +9,16 @@ class Config {
     static $BaseUrl;
     static $JavaScriptUrl;
     static $TestUrls = array(
-        "SessionTokenRequestUrl" => "https://apiuat.test.intelligent-payments.com/token",
-        "PaymentOperationActionUrl" => "https://apiuat.test.intelligent-payments.com/payments",
-        "JavaScriptUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/js/api.js",
-        "BaseUrl" => "https://cashierui-apiuat.test.intelligent-payments.com/ui/cashier",
+        "SessionTokenRequestUrl" => "https://apiuat.test.evomexico.mx/token",
+        "PaymentOperationActionUrl" => "https://apiuat.test.evomexico.mx/payments",
+        "JavaScriptUrl" => "https://cashierui-apiuat.test.evomexico.mx/js/api.js",
+        "BaseUrl" => "https://cashierui-apiuat.test.evomexico.mx/ui/cashier",
     );
     static $ProductionUrls = array(
-        "SessionTokenRequestUrl" => "https://api.intelligent-payments.com/token",
-        "PaymentOperationActionUrl" => "https://api.intelligent-payments.com/payments",
-        "JavaScriptUrl" => "https://cashierui-api.intelligent-payments.com/js/api.js",
-        "BaseUrl" => "https://cashierui-api.intelligent-payments.com/ui/cashier",
+        "SessionTokenRequestUrl" => "https://api.evomexico.mx/token",
+        "PaymentOperationActionUrl" => "https://api.evomexico.mx/payments",
+        "JavaScriptUrl" => "https://cashierui-api.evomexico.mx/js/api.js",
+        "BaseUrl" => "https://cashierui-api.evomexico.mx/ui/cashier",
     );
     static $Protocol = "https";
     static $Method = "POST";
