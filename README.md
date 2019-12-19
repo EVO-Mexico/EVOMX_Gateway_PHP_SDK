@@ -1,7 +1,7 @@
 # EVO-PHP-SDK
 This  library provides integration access to the EVO Payments Gateway.
 
-##Quick Start
+## Quick Start
 
 EVO Payments PHP SDK is a small library of PHP code that you can use to quickly integrate with the EVO Payments system and submit transactions, check their status and more.
 
@@ -11,7 +11,7 @@ This section will give you a very quick introduction as to how you can use it an
 
 Before using the EVO vPayments PHP SDK you should be familiar with the contents of the [API Specification for Merchants](docs/API-Specification.pdf) document as it describes all fields and their meaning within a given payment transaction.
 
-##Setup your Project
+## Setup your Project
 
 EVO Payments PHP SDK is delivered as a composer(*) package, or dependency, that you should add to your PHP project in order to use it.
 
@@ -29,7 +29,7 @@ Payments SDK lets you choose between two ways of using it:
 
 Choose the one that is most appropriate for your project.
 
-##Configure
+## Configure
 
 EVO Payments SDK needs to ‘know’ a few things before it can perform any operation - for example - your authentication credentials; which is your merchant number; if you’re only testing your app and you don’t actually want to pay with a real card or if it is running in a production environment, etc.
 
